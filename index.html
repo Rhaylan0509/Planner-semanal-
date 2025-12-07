@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Planner Semanal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      overscroll-behavior: none;
+    }
+    /* Custom scrollbar for webkit browsers */
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9; /* slate-100 */
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #94a3b8; /* slate-400 */
+      border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #64748b; /* slate-500 */
+    }
+    /* Simple animation for dropping and modal */
+    .cdk-drag-animating {
+      transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    }
+    .cdk-drop-list-dragging .cdk-drag {
+      transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    .animate-fade-in-up {
+      animation: fadeInUp 0.3s ease-out forwards;
+    }
+    
+    @keyframes fadeInButtonsKeyframe {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .animate-fade-in-buttons {
+      animation: fadeInButtonsKeyframe 0.15s ease-out forwards;
+    }
+
+    .striped-background {
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.03),
+        rgba(0, 0, 0, 0.03) 10px,
+        transparent 10px,
+        transparent 20px
+      );
+    }
+
+    /* Styles for the element being dragged */
+    .cdk-drag-preview {
+      box-sizing: border-box;
+      border-radius: 0.5rem; /* rounded-lg */
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); /* shadow-2xl */
+      transform: scale(1.05) rotate(1deg);
+      z-index: 1000 !important;
+    }
+
+    /* Styles for the placeholder where the item will be dropped */
+    .cdk-drag-placeholder {
+      opacity: 1;
+    }
+    .cdk-drag-placeholder > * {
+      visibility: hidden;
+    }
+    .cdk-drag-placeholder::before {
+      content: "";
+      display: block;
+      position: absolute;
+      inset: 0.625rem; /* p-2.5 */
+      border: 2px dashed #94a3b8; /* slate-400 */
+      border-radius: 0.5rem; /* rounded-lg */
+      background-color: rgba(203, 213, 225, 0.2); /* slate-300 with opacity */
+    }
+
+    /* Styles for the drop list when an item is being dragged over it */
+    .drop-container.cdk-drop-list-receiving {
+      background-color: #e0f2fe !important; /* sky-100 */
+      box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "rxjs": "https://aistudiocdn.com/rxjs@^7.8.2?conditions=es2015",
+    "rxjs/operators": "https://aistudiocdn.com/rxjs@^7.8.2/operators?conditions=es2015",
+    "rxjs/ajax": "https://aistudiocdn.com/rxjs@^7.8.2/ajax?conditions=es2015",
+    "rxjs/webSocket": "https://aistudiocdn.com/rxjs@^7.8.2/webSocket?conditions=es2015",
+    "rxjs/testing": "https://aistudiocdn.com/rxjs@^7.8.2/testing?conditions=es2015",
+    "rxjs/fetch": "https://aistudiocdn.com/rxjs@^7.8.2/fetch?conditions=es2015",
+    "@angular/compiler": "https://next.esm.sh/@angular/compiler@^21.0.0?external=rxjs",
+    "@angular/platform-browser": "https://next.esm.sh/@angular/platform-browser@^21.0.0?external=rxjs",
+    "@angular/core": "https://next.esm.sh/@angular/core@^21.0.0?external=rxjs",
+    "@angular/cdk/drag-drop": "https://next.esm.sh/@angular/cdk@^21.0.0/drag-drop?external=rxjs",
+    "@angular/forms": "https://next.esm.sh/@angular/forms@^21.0.0?external=rxjs",
+    "@angular/common": "https://next.esm.sh/@angular/common@^21.0.0?external=rxjs"
+  }
+}
+</script>
+</head>
+<body class="bg-slate-50 font-sans antialiased">
+  <app-root></app-root>
+</body>
+</html>

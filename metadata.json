@@ -1,0 +1,5 @@
+{
+  "name": "Planner Semanal Interativo",
+  "description": "Um planner semanal interativo para organizar suas tarefas. Crie blocos de organização, adicione tags e realoque-os entre os dias da semana com a funcionalidade de arrastar e soltar.",
+  "requestFramePermissions": []
+}
